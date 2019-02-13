@@ -152,6 +152,9 @@ void Estimator::estimatePose(int fid, const vector<Point3d> &worldPoints,
         tvecHistory[fid] = tvec;
     }
 
+    //Calculate aspect ratio. Corners are marked clockwise starting at top left
+    double aspectRatio = dist(imagePoints[0], imagePoints[1])/dist(imagePoints[2], imagePoints[3]);
+
     ft.fiducial_id = fid;
 
     ft.transform.translation.x = tvec[0];
@@ -166,6 +169,7 @@ void Estimator::estimatePose(int fid, const vector<Point3d> &worldPoints,
     ft.fiducial_area = calcFiducialArea(imagePoints);
     ft.image_error = reprojectionError;
     ft.object_error = objectError;
+    ft.aspect_ratio = aspectRatio;
 }
 
 
