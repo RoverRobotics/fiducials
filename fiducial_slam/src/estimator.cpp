@@ -157,7 +157,8 @@ void Estimator::estimatePose(int fid, const vector<Point3d> &worldPoints,
     double length1 =dist(imagePoints[0], imagePoints[1]);
     double length2 =dist(imagePoints[0], imagePoints[2]);
     double length3 =dist(imagePoints[0], imagePoints[3]);
-    ROS_INFO("%2.3f, %2.3f, %2.3f", length1, length2, length3);
+    ROS_INFO("Lengths: %5.3f, %5.3f, %5.3f", length1, length2, length3);
+    ROS_INFO("imagePoints: %f,%f", imagePoints[0]);
 
     ft.fiducial_id = fid;
 
