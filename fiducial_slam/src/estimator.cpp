@@ -153,12 +153,12 @@ void Estimator::estimatePose(int fid, const vector<Point3d> &worldPoints,
     }
 
     //Calculate aspect ratio. Corners are marked clockwise starting at top left
-    double aspectRatio = dist(imagePoints[0], imagePoints[1])/dist(imagePoints[2], imagePoints[3]);
-    double length1 =dist(imagePoints[0], imagePoints[1]);
-    double length2 =dist(imagePoints[0], imagePoints[2]);
-    double length3 =dist(imagePoints[0], imagePoints[3]);
-    ROS_INFO("Lengths: %5.3f, %5.3f, %5.3f", length1, length2, length3);
-    ROS_INFO("imagePoints: %f,%f", imagePoints[0]);
+    double top_length = dist(imagePoints[0], imagePoints[1]);
+    double bottom_length = dist(imagePoints[3], imagePoints[2]);
+    double left_length = dist(imagePoints[0], imagePoints[3]);
+    double right_length = dist(imagePoints[1], imagePoints[2]);
+
+    double aspectRatio = 0.5*(left_length+right_length)/(top_length+bottom_length);
 
     ft.fiducial_id = fid;
 
