@@ -158,7 +158,9 @@ void Estimator::estimatePose(int fid, const vector<Point3d> &worldPoints,
     double left_length = dist(imagePoints[0], imagePoints[3]);
     double right_length = dist(imagePoints[1], imagePoints[2]);
 
-    double aspectRatio = 0.5*(left_length+right_length)/(top_length+bottom_length);
+    ROS_INFO("Top: %5.3f \n Bottom: %5.3f \n Left %5.3f \n Right %5.3f \n ", top_length, bottom_length, left_length, right_length);
+
+    double aspectRatio = (top_length+bottom_length)/(left_length+right_length);
 
     ft.fiducial_id = fid;
 
