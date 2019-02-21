@@ -4,3 +4,4 @@
  float64 image_error
  float64 object_error
  float64 fiducial_area
+ float64 aspect_ratio
